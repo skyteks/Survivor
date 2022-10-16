@@ -20,7 +20,13 @@ public class CharacterAnimator : MonoBehaviour
 
     void LateUpdate()
     {
-        if (Mathf.Abs(rigid.velocity.x) > float.Epsilon || Mathf.Abs(rigid.velocity.z) > float.Epsilon)
+        if (GameManager.simulationPaused)
+        {
+            return;
+        }
+
+        const float deadzone = 0.0001f;
+        if (Mathf.Abs(rigid.velocity.x) > deadzone || Mathf.Abs(rigid.velocity.z) > deadzone)
         {
             Quaternion look = Quaternion.LookRotation(rigid.velocity.ToWithY(0f), Vector3.up);
             modelHolder.localRotation = Quaternion.RotateTowards(modelHolder.localRotation, look, Time.deltaTime * 100f * rotationSpeed);

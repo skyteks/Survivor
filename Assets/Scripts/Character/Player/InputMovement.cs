@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovementInput : MonoBehaviour
+public class InputMovement : MonoBehaviour
 {
     [SerializeField]
     private float movementSpeed = 3f;
@@ -17,6 +17,11 @@ public class MovementInput : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.simulationPaused)
+        {
+            return;
+        }
+
         input.x = Input.GetAxisRaw("Horizontal");
         input.y = Input.GetAxisRaw("Vertical");
 
