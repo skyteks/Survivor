@@ -25,11 +25,11 @@ public class Subscriber : MonoBehaviour
 
     private void Add()
     {
-        GameManager.instance.register.AddObject(subscibingObject);
+        GameManager.Instance.register.AddObject(subscibingObject);
     }
 
     private void Remove()
     {
-        GameManager.instance.register.RemoveObject(subscibingObject);
+        GameManager.Instance?.register.RemoveObject(subscibingObject);
     }
 }

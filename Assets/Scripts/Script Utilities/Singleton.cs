@@ -8,7 +8,7 @@ public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 
     private static object _lock = new object();
 
-    public static T instance
+    public static T Instance
     {
         get
         {
@@ -36,13 +36,17 @@ public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 
                     if (_instance == null)
                     {
-                        GameObject singleton = new GameObject();
-                        _instance = singleton.AddComponent<T>();
-                        singleton.name = "(singleton) " + typeof(T).ToString();
+                        const bool addWhenMissing = false;
+                        if (addWhenMissing)
+                        {
+                            GameObject singleton = new GameObject();
+                            _instance = singleton.AddComponent<T>();
+                            singleton.name = "(singleton) " + typeof(T).ToString();
 
-                        Debug.Log("[Singleton] An instance of " + typeof(T) +
-                            " is needed in the scene, so '" + singleton +
-                            "' was created.");
+                            Debug.Log("[Singleton] An instance of " + typeof(T) +
+                                " is needed in the scene, so '" + singleton +
+                                "' was created.");
+                        }
                     }
                     else
                     {

@@ -13,12 +13,12 @@ public class PlayerHudManager : MonoBehaviour
 
     void OnEnable()
     {
-        GameManager.instance.onPlayerHealthChange += OnHealthChange;
+        GameManager.Instance.onPlayerHealthChange += OnHealthChange;
     }
 
     void OnDisable()
     {
-        GameManager.instance.onPlayerHealthChange -= OnHealthChange;
+        GameManager.Instance.onPlayerHealthChange -= OnHealthChange;
     }
 
     public void OnHealthChange(float current, float max)

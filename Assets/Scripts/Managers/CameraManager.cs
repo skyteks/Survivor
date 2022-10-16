@@ -23,7 +23,7 @@ public class CameraManager : MonoBehaviour
 
     private void FollowPlayer()
     {
-        Transform player = (GameManager.instance.register.GetFirstObjectOfType(typeof(InputMovement)) as InputMovement).transform;
+        Transform player = (GameManager.Instance.register.GetFirstObjectOfType(typeof(InputMovement)) as InputMovement).transform;
         transform.position = Vector3.MoveTowards(transform.position, player.position, Time.deltaTime * 100f);
     }
 }

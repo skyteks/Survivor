@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.Events;
 using static Health;
 
-[DefaultExecutionOrder(-1000)]
 public class GameManager : Singleton<GameManager>
 {
     public static bool simulationPaused { get; private set; }
