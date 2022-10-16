@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public enum DamageTypes
 {
@@ -19,14 +20,25 @@ public class Health : MonoBehaviour
     [SerializeField, ReadOnly]
     private float currentHealth;
 
+    public delegate void HealthChangeEvent(float current, float max);
+    public event HealthChangeEvent onHealthChange;
+
     void OnEnable()
     {
         currentHealth = maxHealth;
     }
 
+    [ContextMenu("TEST: Take 1 DMG")]
+    private void TestTake1Dmg()
+    {
+        TakeDamage(1, DamageTypes.Physical);
+    }
+
     public void TakeDamage(float incommingDmg, DamageTypes dmgType)
     {
         currentHealth = Mathf.Max(0f, currentHealth - incommingDmg);
+
+        onHealthChange?.Invoke(currentHealth, maxHealth);
 
         if (currentHealth == 0f)
         {

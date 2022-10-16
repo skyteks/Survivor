@@ -10,8 +10,9 @@ public class Register
     private Dictionary<System.Type, List<Object>> dictionary = new();
     private List<Object> list = new();
 
-    public UnityEvent<Object> onAdded;
-    public UnityEvent<Object> onRemoved;
+    public delegate void ObjectRegisterEvent(Object obj);
+    public event ObjectRegisterEvent onAdded;
+    public event ObjectRegisterEvent onRemoved;
 
     public bool AddObject(Object obj)
     {

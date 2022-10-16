@@ -19,9 +19,8 @@ public class Subscriber : MonoBehaviour
     {
         if (subscibingObject != null)
         {
-
+            Remove();
         }
-        Remove();
     }
 
     private void Add()
