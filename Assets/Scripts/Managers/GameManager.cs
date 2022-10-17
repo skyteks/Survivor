@@ -13,45 +13,4 @@ public class GameManager : Singleton<GameManager>
     {
         simulationPaused = toggle;
     }
-
-    [Header("Register")]
-
-
-    [SerializeField]
-    private Register objectRegister = new Register();
-    public Register register => objectRegister;
-
-
-    public event HealthChangeEvent onPlayerHealthChange;
-
-    void Awake()
-    {
-        register.onAdded += OnObjectAddedToRegister;
-        register.onRemoved += OnObjectRemovedFromRegister;
-    }
-
-    private void OnObjectAddedToRegister(Object obj)
-    {
-        if (obj.GetType() == typeof(InputMovement))
-        {
-            Transform player = (obj as InputMovement).transform;
-            Health health = player.GetComponentInChildren<Health>();
-            health.onHealthChange += InformPlayerHealthChanged;
-        }
-    }
-
-    private void OnObjectRemovedFromRegister(Object obj)
-    {
-        if (obj.GetType() == typeof(InputMovement))
-        {
-            Transform player = (obj as InputMovement).transform;
-            Health health = player.GetComponentInChildren<Health>();
-            health.onHealthChange -= InformPlayerHealthChanged;
-        }
-    }
-
-    public void InformPlayerHealthChanged(float current, float max)
-    {
-        onPlayerHealthChange?.Invoke(current, max);
-    }
 }

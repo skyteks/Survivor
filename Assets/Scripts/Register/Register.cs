@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [System.Serializable]
-public class Register
+public class Register : Singleton<Register>
 {
     private Dictionary<System.Type, List<Object>> dictionary = new();
     private List<Object> list = new();

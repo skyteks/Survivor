@@ -28,11 +28,9 @@ public class NavMeshMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
 
-        Transform player = (GameManager.Instance.register.GetFirstObjectOfType(typeof(InputMovement)) as InputMovement).transform;
-
         for (; ; )
         {
-            agent.destination = player.position;
+            agent.destination = PlayerManager.currentInstance.transform.position;
             yield return null;
         }
     }

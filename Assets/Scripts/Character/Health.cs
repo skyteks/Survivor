@@ -28,10 +28,10 @@ public class Health : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    [ContextMenu("TEST: Take 1 DMG")]
+    [ContextMenu("TEST Take 10 DMG")]
     private void TestTake1Dmg()
     {
-        TakeDamage(1, DamageTypes.Physical);
+        TakeDamage(10, DamageTypes.Physical);
     }
 
     public void TakeDamage(float incommingDmg, DamageTypes dmgType)
@@ -48,6 +48,6 @@ public class Health : MonoBehaviour
 
     private void Die()
     {
-        GameManager.ToggleSimulationPause(true);
+        
     }
 }
