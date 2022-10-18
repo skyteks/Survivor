@@ -57,6 +57,7 @@ public class DamageZone : MonoBehaviour
             {
                 return;
             }
+            dotTargets[health] = Time.time;
         }
         else
         {

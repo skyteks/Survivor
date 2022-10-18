@@ -2765,6 +2765,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
+  dot: 1
   type: 0
 --- !u!135 &1839037831
 SphereCollider:
