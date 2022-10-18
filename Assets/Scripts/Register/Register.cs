@@ -8,6 +8,7 @@ using UnityEngine.Events;
 public class Register : Singleton<Register>
 {
     private Dictionary<System.Type, List<Object>> dictionary = new();
+    [SerializeField]
     private List<Object> list = new();
 
     public delegate void ObjectRegisterEvent(Object obj);
