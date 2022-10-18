@@ -37,10 +37,11 @@ public class GameManager : Singleton<GameManager>
 
             GameObject instance = Instantiate(enemyPrefab01, pos, Quaternion.identity);
             instance.name = string.Concat(instance.name, "[", i + 1, "]");
+            instance.SetActive(true);
 
             if (enemyDelay01 > float.Epsilon)
             {
-            yield return Yielders.Get(enemyDelay01);
+                yield return Yielders.Get(enemyDelay01);
             }
         }
     }
