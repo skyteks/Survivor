@@ -26,6 +26,14 @@ public class Health : MonoBehaviour
     void OnEnable()
     {
         currentHealth = maxHealth;
+
+        EnemyOverhead overhead = transform.parent.GetComponentInChildren<EnemyOverhead>();
+        if (overhead != null)
+        {
+            onHealthChange += overhead.OnHealthChange;
+        }
+
+        onHealthChange?.Invoke(currentHealth, maxHealth);
     }
 
     [ContextMenu("TEST Take 10 DMG")]
@@ -48,6 +56,6 @@ public class Health : MonoBehaviour
 
     private void Die()
     {
-        
+
     }
 }

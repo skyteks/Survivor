@@ -31,12 +31,12 @@ public class GameManager : Singleton<GameManager>
     {
         SpawnArea spawnArea = SpawnArea.Instance;
 
-        for (int i = 0; i <= enemyAmount01; i++)
+        for (int i = 0; i < enemyAmount01; i++)
         {
             Vector3 pos = spawnArea.GetRandomRaycastedPosition();
 
             GameObject instance = Instantiate(enemyPrefab01, pos, Quaternion.identity);
-            instance.name = string.Concat(instance.name, "[", i, "]");
+            instance.name = string.Concat(instance.name, "[", i + 1, "]");
 
             if (enemyDelay01 > float.Epsilon)
             {

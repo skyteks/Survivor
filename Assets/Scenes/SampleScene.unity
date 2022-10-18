@@ -2764,7 +2764,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab01: {fileID: 6700734128289677077, guid: f2cf1c3bb4b46e24b8f0b7089f5d780e, type: 3}
   enemyDelay01: 0.2
-  enemyAmount01: 100
+  enemyAmount01: 1
 --- !u!4 &1865369545
 Transform:
   m_ObjectHideFlags: 0

@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class EnemyOverhead : MonoBehaviour
 {
     [SerializeField]
+    private bool hideWhenFullLive = true;
+    [SerializeField]
     private Image healthbarFill;
     [SerializeField]
     private TextMeshProUGUI healthbarText;
@@ -20,7 +22,8 @@ public class EnemyOverhead : MonoBehaviour
 
     void OnEnable()
     {
-        health.onHealthChange += OnHealthChange;
+        // Done in Health.OnEnable()
+        //health.onHealthChange += OnHealthChange;
     }
 
     void OnDisable()
@@ -30,6 +33,8 @@ public class EnemyOverhead : MonoBehaviour
 
     public void OnHealthChange(float current, float max)
     {
+        gameObject.SetActive(hideWhenFullLive ? (current < max) : true);
+
         healthbarFill.fillAmount = current / max;
         if (healthbarText != null)
         {
