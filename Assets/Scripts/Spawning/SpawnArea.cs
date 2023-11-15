@@ -46,12 +46,10 @@ public class SpawnArea : Singleton<SpawnArea>
         throw new System.Exception("No ground collider under spawnpoint");
     }
 
-    public Vector3[] GetRandomRaycastedPositionsArray(int count)
+    public Vector3[] GetRandomRaycastedPositionsCircleArray(int count)
     {
         Vector3 pos = GetRandomPosition();
         Vector3 offset = Vector3.up * 5f;
-
-        float aproxRadius = count * Mathf.PI;
         Vector3[] array = new Vector3[count];
 
         for (int i = 0; i < count; i++)
@@ -60,9 +58,11 @@ public class SpawnArea : Singleton<SpawnArea>
             bool success = false;
             do
             {
-                Vector3 rand = Random.insideUnitCircle.ToVector3XZ() * aproxRadius;
+                Vector3 rand = Random.insideUnitCircle.ToVector3XZ() * count;
                 success = Physics.Raycast(pos + offset + rand, Vector3.down, out RaycastHit hit, 10f, navMeshLayer);
+                vector = hit.point;
             } while (!success);
+            array[i] = vector;
         }
         return array;
     }

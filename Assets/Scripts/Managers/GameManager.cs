@@ -45,9 +45,16 @@ public class GameManager : Singleton<GameManager>
             SubWaveInfo current = wave.subWaves[i];
             GameObject prefab = wave.enemyPrefabs[current.enemyIndex];
 
-            Vector3[] pos = null;
-            pos = new Vector3[1];
-            pos[0] = spawnArea.GetRandomRaycastedPosition();
+            Vector3[] pos = null; 
+            if (current.enemyCount == 1)
+            {
+                pos = new Vector3[1];
+                pos[0] = spawnArea.GetRandomRaycastedPosition();
+            }
+            else
+            {
+                pos = spawnArea.GetRandomRaycastedPositionsCircleArray(current.enemyCount);
+            }
 
             for (int j = 0; j < current.enemyCount; j++)
             {
