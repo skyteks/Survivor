@@ -7,12 +7,11 @@ public class SpawnArea : Singleton<SpawnArea>
 {
     [SerializeField]
     private Rect spawnarea;
-
-    private NavMeshSurface navMesh;
+    [SerializeField]
+    private LayerMask navMeshLayer;
 
     void Awake()
     {
-        navMesh = GetComponent<NavMeshSurface>();
     }
 
     void OnDrawGizmosSelected()
@@ -36,8 +35,7 @@ public class SpawnArea : Singleton<SpawnArea>
     public Vector3 GetRandomRaycastedPosition()
     {
         Vector3 pos = GetRandomPosition();
-
-        if (Physics.Raycast(pos + Vector3.up * 5f, Vector3.down, out RaycastHit hit, 10f, navMesh.layerMask))
+        if (Physics.Raycast(pos + Vector3.up * 5f, Vector3.down, out RaycastHit hit, 10f, navMeshLayer))
         {
             return hit.point;
         }
