@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1154915554761541010}
   - component: {fileID: 1154915554761541011}
-  - component: {fileID: 1154915554761541008}
   m_Layer: 0
   m_Name: Camera Rig
   m_TagString: Untagged
@@ -25,6 +24,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1154915554761541037}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -32,7 +32,6 @@ Transform:
   m_Children:
   - {fileID: 1154915554769201926}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1154915554761541011
 MonoBehaviour:
@@ -46,19 +45,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6eb3d9ca2011cd418d7e0b1c54accfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1154915554761541008
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1154915554761541037}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f434b422039077d478c060af9fabb89d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  subscibingObject: {fileID: 1154915554761541011}
 --- !u!1 &1154915554769201923
 GameObject:
   m_ObjectHideFlags: 0
@@ -84,13 +70,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1154915554769201923}
+  serializedVersion: 2
   m_LocalRotation: {x: 0.6228611, y: -0, z: -0, w: 0.7823325}
   m_LocalPosition: {x: 0, y: 12.16, z: -2.87}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1154915554761541010}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 77.051, y: 0, z: 0}
 --- !u!20 &1154915554769201921
 Camera:
@@ -106,9 +92,17 @@ Camera:
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
+  m_Iso: 200
+  m_ShutterSpeed: 0.005
+  m_Aperture: 16
+  m_FocusDistance: 10
+  m_FocalLength: 50
+  m_BladeCount: 5
+  m_Curvature: {x: 2, y: 11}
+  m_BarrelClipping: 0.25
+  m_Anamorphism: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0

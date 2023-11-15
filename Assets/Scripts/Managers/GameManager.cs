@@ -1,48 +1,63 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using static Health;
+using static WaveInfo;
 
 public class GameManager : Singleton<GameManager>
 {
-    public static bool simulationPaused { get; private set; }
+    public static bool simulationPaused;
 
-    public static void ToggleSimulationPause(bool toggle)
-    {
-        simulationPaused = toggle;
-    }
+    [SerializeField]
+    private WaveInfo[] waves;
 
-    [Header("Wave 01")]
-    [SerializeField]
-    private GameObject enemyPrefab01;
-    [SerializeField]
-    private float enemyDelay01 = 1f;
-    [SerializeField]
-    private int enemyAmount01 = 10;
+    private Coroutine activeWave;
+    private Queue<WaveInfo> queue;
 
     void Start()
     {
-        StartCoroutine(Wave01());
+        queue = new Queue<WaveInfo>(waves);
     }
 
-    private IEnumerator Wave01()
+    void Update()
+    {
+        if (simulationPaused || activeWave != null)
+        {
+            return;
+        }
+
+        if (queue.Count > 0)
+        {
+            WaveInfo current = queue.Dequeue();
+            activeWave = StartCoroutine(RunWave(current));
+        }
+    }
+
+    public IEnumerator RunWave(WaveInfo wave)
     {
         SpawnArea spawnArea = SpawnArea.Instance;
 
-        for (int i = 0; i < enemyAmount01; i++)
+        for (int i = 0; i < wave.subWaves.Length; i++)
         {
-            Vector3 pos = spawnArea.GetRandomRaycastedPosition();
+            SubWaveInfo current = wave.subWaves[i];
+            GameObject prefab = wave.enemyPrefabs[current.enemyIndex];
 
-            GameObject instance = Instantiate(enemyPrefab01, pos, Quaternion.identity);
-            instance.name = string.Concat(instance.name, "[", i + 1, "]");
-            instance.SetActive(true);
+            Vector3[] pos = null;
+            pos = new Vector3[1];
+            pos[0] = spawnArea.GetRandomRaycastedPosition();
 
-            if (enemyDelay01 > float.Epsilon)
+            for (int j = 0; j < current.enemyCount; j++)
             {
-                yield return Yielders.Get(enemyDelay01);
+                GameObject instance = Instantiate(prefab, pos[j], Quaternion.identity);
+                instance.name = string.Concat(instance.name, "[", j + 1, "]");
+                instance.SetActive(true);
             }
+
+            yield return Yielders.Get(wave.delayBetweenSubwaves);
         }
+        activeWave = null;
     }
 }

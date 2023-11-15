@@ -3013,9 +3013,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 456dc6236197ce24fbc86cdc0e66281b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab01: {fileID: 6700734128289677077, guid: f2cf1c3bb4b46e24b8f0b7089f5d780e, type: 3}
-  enemyDelay01: 0.2
-  enemyAmount01: 1
+  waves:
+  - {fileID: 11400000, guid: 8cce815881cea294e8ce7a4ff698d510, type: 2}
 --- !u!4 &1865369545
 Transform:
   m_ObjectHideFlags: 0
@@ -3585,10 +3584,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1154915554761541010, guid: e377a15dda1b0c24892da375ec531453, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1154915554761541010, guid: e377a15dda1b0c24892da375ec531453, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

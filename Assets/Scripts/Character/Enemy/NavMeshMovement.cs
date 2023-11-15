@@ -26,7 +26,7 @@ public class NavMeshMovement : MonoBehaviour
 
     private IEnumerator GoToPlayer()
     {
-        yield return new WaitForSeconds(1f);
+        yield return Yielders.Get(1f);
 
         for (; ; )
         {
